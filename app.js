@@ -2,6 +2,7 @@ const menuBtn = document.getElementById("menuBtn");
 const menu = document.getElementById("menu");
 const overlay = document.getElementById("overlay");
 const menuList = document.querySelectorAll(".menu-list");
+const exitBtn = document.getElementById("exitBtn");
 
 // Contact Button
 const contactNumber = "2069196886";
@@ -13,19 +14,35 @@ menuBtn.addEventListener("click", () => {
   toggleMenu();
 });
 
+exitBtn.addEventListener("click", () => {
+  toggleMenu();
+});
+
 overlay.addEventListener("touchstart", () => {
+  toggleMenu();
+});
+
+overlay.addEventListener("click", () => {
   toggleMenu();
 });
 
 function toggleMenu() {
   if (menu.classList.contains("translate-x-full")) {
     overlay.classList.remove("hidden");
+
     menu.classList.remove("translate-x-full");
     menu.classList.add("translate-x-0");
+
+    menuBtn.classList.add("hidden");
+    exitBtn.classList.remove("hidden");
   } else {
     overlay.classList.add("hidden");
+
     menu.classList.remove("translate-x-0");
     menu.classList.add("translate-x-full");
+
+    menuBtn.classList.remove("hidden");
+    exitBtn.classList.add("hidden");
   }
 
   console.log(menu);
